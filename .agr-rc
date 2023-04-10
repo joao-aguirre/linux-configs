@@ -9,6 +9,10 @@ export PATH=${PATH}:${APPS_DIR}/btop/bin
 export PATH=${PATH}:${APPS_DIR}/cmake/bin
 # delta.
 export PATH=${PATH}:${APPS_DIR}/delta
+# exa.
+export PATH=${PATH}:${APPS_DIR}/exa/bin
+alias ls="exa"
+alias la="exa --long --icons --all --header --time-style long-iso --group-directories-first"
 # fd.
 export PATH=${PATH}:${APPS_DIR}/fd
 alias fd="fd -X bat"
@@ -58,9 +62,19 @@ trap nnn_cd EXIT
 # oh-my-posh.
 export PATH=${PATH}:${APPS_DIR}/oh-my-posh
 eval "$(oh-my-posh init bash --config ${HOME}/.config/oh-my-posh/agr-prompt.omp.json)"
+# ripgrep
+export PATH=${PATH}:${APPS_DIR}/ripgrep
+# texlive
+export MANPATH=${MANPATH}:${APPS_DIR}/texlive/texmf-dist/doc/man
+export INFOPATH=${INFOPATH}:${APPS_DIR}/texlive/texmf-dist/doc/info
+export PATH=${PATH}:${APPS_DIR}/texlive/bin/x86_64-linux
 # Vim.
 export PATH=${PATH}:${APPS_DIR}/vim/bin
 # zoxide.
 export PATH=${PATH}:${APPS_DIR}/zoxide
 eval "$(zoxide init bash)"
+
+# linux-configs repository
+alias linux-configs="/usr/bin/git --git-dir=${HOME}/projects/linux-configs --work-tree=${HOME}"
+linux-configs config status.showUntrackedFiles no
 
