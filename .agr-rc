@@ -1,0 +1,66 @@
+# Application paths.
+export APPS_DIR=${HOME}/apps
+# bat.
+export PATH=${PATH}:${APPS_DIR}/bat
+export BAT_THEME="Catppuccin-mocha"
+# btop++
+export PATH=${PATH}:${APPS_DIR}/btop/bin
+# CMake.
+export PATH=${PATH}:${APPS_DIR}/cmake/bin
+# delta.
+export PATH=${PATH}:${APPS_DIR}/delta
+# fd.
+export PATH=${PATH}:${APPS_DIR}/fd
+alias fd="fd -X bat"
+# fzf.
+export PATH=${PATH}:${APPS_DIR}/fzf
+export FZF_DEFAULT_OPTS=" \
+--color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
+--color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
+--color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8"
+alias fzf='fzf --preview "bat --color=always --style=numbers --line-range=:500 {}"'
+# lazygit.
+export PATH=${PATH}:${APPS_DIR}/lazygit
+# LLVM/Clang.
+export PATH=${PATH}:${APPS_DIR}/clang+llvm/bin
+# Neovim.
+export PATH=${PATH}:${APPS_DIR}/neovim/bin
+# Miniforge.
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/aguirre/apps/miniforge3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/aguirre/apps/miniforge3/etc/profile.d/conda.sh" ]; then
+        . "/home/aguirre/apps/miniforge3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/aguirre/apps/miniforge3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+# Ninja.
+export PATH=${PATH}:${APPS_DIR}/ninja
+## nnn
+export PATH=${PATH}:${APPS_DIR}/nnn
+source ${APPS_DIR}/nnn/misc/quitcd/quitcd.bash_zsh
+## nnn settings
+export NNN_COLORS='1234'
+## nnn sync subshell $PWD (https://github.com/jarun/nnn/wiki/Basic-use-cases#sync-subshell-pwd)
+nnn_cd()
+{
+    if ! [ -z "$NNN_PIPE" ]; then
+        printf "%s\0" "0c${PWD}" > "${NNN_PIPE}" !&
+    fi
+}
+trap nnn_cd EXIT
+# oh-my-posh.
+export PATH=${PATH}:${APPS_DIR}/oh-my-posh
+eval "$(oh-my-posh init bash --config ${HOME}/.config/oh-my-posh/agr-prompt.omp.json)"
+# Vim.
+export PATH=${PATH}:${APPS_DIR}/vim/bin
+# zoxide.
+export PATH=${PATH}:${APPS_DIR}/zoxide
+eval "$(zoxide init bash)"
+
