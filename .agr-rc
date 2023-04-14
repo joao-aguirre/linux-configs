@@ -9,13 +9,8 @@ export PATH=${PATH}:${APPS_DIR}/btop/bin
 export PATH=${PATH}:${APPS_DIR}/cmake/bin
 # delta.
 export PATH=${PATH}:${APPS_DIR}/delta
-# exa.
-export PATH=${PATH}:${APPS_DIR}/exa/bin
-alias ls="exa"
-alias la="exa --long --icons --all --header --time-style long-iso --group-directories-first"
 # fd.
 export PATH=${PATH}:${APPS_DIR}/fd
-alias fd="fd -X bat"
 # fzf.
 export PATH=${PATH}:${APPS_DIR}/fzf
 export FZF_DEFAULT_OPTS=" \
@@ -27,6 +22,10 @@ alias fzf='fzf --preview "bat --color=always --style=numbers --line-range=:500 {
 export PATH=${PATH}:${APPS_DIR}/lazygit
 # LLVM/Clang.
 export PATH=${PATH}:${APPS_DIR}/clang+llvm/bin
+# lsd
+export PATH=${PATH}:${APPS_DIR}/lsd
+alias ls="lsd"
+alias la="lsd --all --long --human-readable --group-directories-first"
 # Neovim.
 export PATH=${PATH}:${APPS_DIR}/neovim/bin
 # Miniforge.
