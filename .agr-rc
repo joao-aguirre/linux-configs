@@ -74,6 +74,6 @@ export PATH=${PATH}:${APPS_DIR}/zoxide
 eval "$(zoxide init bash)"
 
 # linux-configs repository
+# After the cloning of the linux-configs repository, it is good to run the following command:
+# linux-configs config status.showUntrackedFiles no
 alias linux-configs="/usr/bin/git --git-dir=${HOME}/projects/linux-configs --work-tree=${HOME}"
-linux-configs config status.showUntrackedFiles no
-
