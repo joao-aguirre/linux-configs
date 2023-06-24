@@ -7,8 +7,12 @@ export BAT_THEME="Catppuccin-mocha"
 export PATH=${PATH}:${APPS_DIR}/btop/bin
 # CMake.
 export PATH=${PATH}:${APPS_DIR}/cmake/bin
+# cppcheck
+export PATH=${PATH}:${APPS_DIR}/cppcheck/build/bin
 # delta.
 export PATH=${PATH}:${APPS_DIR}/delta
+# dust.
+export PATH=${PATH}:${APPS_DIR}/dust
 # fd.
 export PATH=${PATH}:${APPS_DIR}/fd
 # fzf.
@@ -63,10 +67,12 @@ export PATH=${PATH}:${APPS_DIR}/oh-my-posh
 eval "$(oh-my-posh init bash --config ${HOME}/.config/oh-my-posh/agr-prompt.omp.json)"
 # ripgrep
 export PATH=${PATH}:${APPS_DIR}/ripgrep
+# Rust
+. "${HOME}/.cargo/env"
 # texlive
 export MANPATH=${MANPATH}:${APPS_DIR}/texlive/texmf-dist/doc/man
 export INFOPATH=${INFOPATH}:${APPS_DIR}/texlive/texmf-dist/doc/info
-export PATH=${PATH}:${APPS_DIR}/texlive/bin/x86_64-linux
+export PATH=${PATH}:${APPS_DIR}/texlive/bin/$(uname -m)linux
 # Vim.
 export PATH=${PATH}:${APPS_DIR}/vim/bin
 # zoxide.
