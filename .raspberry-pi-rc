@@ -1,0 +1,40 @@
+#    __       __   _ __
+#  /'__`\   /'_ `\/\`'__\
+# /\ \L\.\_/\ \L\ \ \ \/
+# \ \__/.\_\ \____ \ \_\
+#  \/__/\/_/\/___L\ \/_/
+#             /\____/
+#             \_/__/
+
+# Raspberry Pi configuration.
+echo "Loading Raspberry Pi settings."
+
+# Environment variables.
+# Necessary to fix the
+# `bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)`
+# error when using Clang installed by Nix.
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+export LOCALE_ARCHIVE=/lib/locale/locale-archive
+# Used by `vcpkg` in the Raspberry Pi
+export VCPKG_FORCE_SYSTEM_BINARIES=1
+
+# Tex Live settings.
+export MANPATH=${MANPATH}:${HOME}/apps/texlive/2025/texmf-dist/doc/man
+export INFOPATH=${INFOPATH}:${HOME}/apps/texlive/2025/texmf-dist/doc/info
+export PATH=${HOME}/apps/texlive/2025/bin/aarch64-linux:${PATH}
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('${HOME}/apps/miniforge3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "${HOME}/apps/miniforge3/etc/profile.d/conda.sh" ]; then
+        . "${HOME}/apps/miniforge3/etc/profile.d/conda.sh"
+    else
+        export PATH="${HOME}/apps/miniforge3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<

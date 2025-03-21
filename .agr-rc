@@ -1,0 +1,48 @@
+#    __       __   _ __
+#  /'__`\   /'_ `\/\`'__\
+# /\ \L\.\_/\ \L\ \ \ \/
+# \ \__/.\_\ \____ \ \_\
+#  \/__/\/_/\/___L\ \/_/
+#             /\____/
+#             \_/__/
+
+# Personal settings.
+echo "Loading personal settings."
+
+# Environment variables.
+export PATH=${HOME}/apps/bin:${PATH}
+export MANPATH=${HOME}/.local/share/man:${MANPATH}
+
+# `bat`
+eval "$(bat --completion bash)"
+export MANPAGER="sh -c 'sed -u -e \"s/\\x1B\[[0-9;]*m//g; s/.\\x08//g\" | bat -p -lman'"
+
+# `fzf`
+eval "$(fzf --bash)"
+export FZF_DEFAULT_OPTS=" \
+--color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
+--color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
+--color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8"
+alias fzf='fzf --preview "batcat --color=always --style=numbers --line-range=:500 {}"'
+
+# `lsd`
+alias ls="lsd"
+alias la="lsd --all --long --human-readable --group-directories-first"
+
+# `nnn`
+source ${HOME}/apps/nnn/misc/quitcd/quitcd.bash_sh_zsh
+export NNN_COLORS="1234"
+## nnn sync subshell $PWD (https://github.com/jarun/nnn/wiki/Basic-use-cases#sync-subshell-pwd)
+nnn_cd()
+{
+    if ! [ -z "$NNN_PIPE" ]; then
+        printf "%s\0" "0c${PWD}" > "${NNN_PIPE}" !&
+    fi
+}
+trap nnn_cd EXIT
+
+# `oh-my-posh`
+eval "$(oh-my-posh init bash --config ${HOME}/.cache/oh-my-posh/themes/agr-prompt.omp.json)"
+
+# `zoxide`
+eval "$(zoxide init bash)"
