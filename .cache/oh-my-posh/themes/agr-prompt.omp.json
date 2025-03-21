@@ -1,0 +1,171 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "palette": {
+    "mocha-base": "#1e1e2e",
+    "mocha-blue": "#87b0f9",
+    "mocha-crust": "#11111b",
+    "mocha-flamingo": "#f2cdcd",
+    "mocha-green": "#a6e3a1",
+    "mocha-lavender": "#b4befe",
+    "mocha-mantle": "#181825",
+    "mocha-maroon": "#eba0ac",
+    "mocha-mauve": "#cba6f7",
+    "mocha-overlay0": "#696d86",
+    "mocha-overlay1": "#7b819d",
+    "mocha-overlay2": "#8e95b3",
+    "mocha-peach": "#fab387",
+    "mocha-pink": "#f5c2e7",
+    "mocha-red": "#f38ba8",
+    "mocha-rosewater": "#f5e0dc",
+    "mocha-sapphire": "#74c7ec",
+    "mocha-sky": "#89dceb",
+    "mocha-subtext0": "#a1a8c9",
+    "mocha-subtext1": "#b3bcdf",
+    "mocha-surface0": "#313244",
+    "mocha-surface1": "#43465a",
+    "mocha-surface2": "#565970",
+    "mocha-teal": "#94e2d5",
+    "mocha-text": "#c6d0f5",
+    "mocha-yellow": "#f9e2af"
+  },
+  "blocks": [
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "template": "\u256d",
+          "type": "text",
+          "style": "plain"
+        },
+        {
+          "properties": {
+            "macos": "mac"
+          },
+          "leading_diamond": "\ue0b6",
+          "template": " {{.Icon}}{{ if .WSL }}(WSL){{ end }}",
+          "foreground": "p:mocha-surface0",
+          "background": "p:mocha-blue",
+          "type": "os",
+          "style": "diamond"
+        },
+        {
+          "template": " \uf13e",
+          "foreground": "p:mocha-surface0",
+          "background": "p:mocha-blue",
+          "type": "root",
+          "style": "diamond"
+        },
+        {
+          "properties": {
+            "display_host": false
+          },
+          "trailing_diamond": "\ue0b0",
+          "template": " {{ if .SSHSession }}\uf817 {{ end }}{{ .UserName }}@{{ .HostName }} ",
+          "foreground": "p:mocha-surface0",
+          "background": "p:mocha-blue",
+          "type": "session",
+          "style": "diamond"
+        },
+        {
+          "properties": {
+            "home_icon": "~",
+            "max_depth": 5,
+            "style": "folder"
+          },
+          "leading_diamond": "<transparent,background>\ue0b0</>",
+          "trailing_diamond": "\ue0b0",
+          "template": " \uf07c  {{ .Path }} ",
+          "foreground": "p:mocha-surface0",
+          "background": "p:mocha-mauve",
+          "type": "path",
+          "style": "diamond"
+        },
+        {
+          "template": "\ue0b0",
+          "foreground": "transparent",
+          "background": "p:mocha-yellow",
+          "type": "text",
+          "style": "plain"
+        },
+        {
+          "template": " \ue235 {{ .Venv }} ",
+          "foreground": "p:mocha-surface0",
+          "background": "p:mocha-yellow",
+          "type": "python",
+          "style": "diamond"
+        },
+        {
+          "template": "\ue0b0",
+          "foreground": "p:mocha-yellow",
+          "background": "transparent",
+          "type": "text",
+          "style": "plain"
+        },
+        {
+          "properties": {
+            "branch_max_length": 25,
+            "fetch_status": true,
+            "fetch_upstream_icon": true,
+            "github_icon": "\uf7a3 "
+          },
+          "template": " {{ if .UpstreamURL }}{{ url .UpstreamIcon .UpstreamURL }} {{ end }}{{ .HEAD }}{{ .BranchStatus }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }} ",
+          "foreground": "p:mocha-surface0",
+          "powerline_symbol": "\ue0b0",
+          "background": "p:mocha-green",
+          "type": "git",
+          "style": "accordion",
+          "background_templates": [
+            "{{ if or (.Working.Changed) (.Staging.Changed) }}p:mocha-red{{ end }}",
+            "{{ if or (gt .Ahead 0) (gt .Behind 0) }}p:mocha-red{{ end }}"
+          ]
+        }
+      ],
+      "newline": true
+    },
+    {
+      "type": "prompt",
+      "alignment": "right",
+      "segments": [
+        {
+          "template": "<p:mocha-blue><b>{{ .CurrentDate | date \"15:04:05 2006-01-02\" }}</b></>",
+          "foreground": "p:mocha-surface0",
+          "background": "transparent",
+          "type": "time",
+          "style": "plain"
+        }
+      ]
+    },
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "template": "\u2570",
+          "type": "text",
+          "style": "plain"
+        },
+        {
+          "properties": {
+            "always_enabled": true,
+            "style": "austin",
+            "threshold": 100
+          },
+          "type": "executiontime",
+          "style": "plain"
+        },
+        {
+          "properties": {
+            "always_enabled": true
+          },
+          "template": "λ",
+          "type": "exit",
+          "style": "plain"
+        }
+      ],
+      "newline": true
+    }
+  ],
+  "version": 3,
+  "final_space": true
+}
