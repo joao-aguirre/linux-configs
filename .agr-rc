@@ -9,6 +9,9 @@
 # Personal settings.
 echo "Loading personal settings."
 
+# Aliases
+alias linux-configs="/usr/bin/git --git-dir=${HOME}/projects/linux-configs --work-tree=${HOME}"
+
 # Environment variables.
 export PATH=${HOME}/apps/bin:${PATH}
 export MANPATH=${HOME}/.local/share/man:${MANPATH}
@@ -46,3 +49,4 @@ eval "$(oh-my-posh init bash --config ${HOME}/.cache/oh-my-posh/themes/agr-promp
 
 # `zoxide`
 eval "$(zoxide init bash)"
+
