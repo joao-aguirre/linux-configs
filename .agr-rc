@@ -10,6 +10,7 @@
 echo "Loading personal settings."
 
 # Aliases
+alias lz=lazygit
 alias linux-configs="/usr/bin/git --git-dir=${HOME}/projects/linux-configs --work-tree=${HOME}"
 
 # Environment variables.
@@ -26,7 +27,7 @@ export FZF_DEFAULT_OPTS=" \
 --color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
 --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
 --color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8"
-alias fzf='fzf --preview "batcat --color=always --style=numbers --line-range=:500 {}"'
+alias fzf='fzf --preview "bat --color=always --style=numbers --line-range=:500 {}"'
 
 # `lsd`
 alias ls="lsd"
@@ -49,4 +50,3 @@ eval "$(oh-my-posh init bash --config ${HOME}/.cache/oh-my-posh/themes/agr-promp
 
 # `zoxide`
 eval "$(zoxide init bash)"
-
